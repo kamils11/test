@@ -3,6 +3,9 @@ import React from 'react';
 import Form from './Form';
 import Tasks from './Tasks';
 import Buttons from './Buttons';
+import Section from './Section';
+import Header from './Header';
+import Container from './Container';
 
 const tasks = [
   { id: 1, content: 'nauczyć się reacta', done: false },
@@ -14,21 +17,22 @@ const hideDoneTask = false;
 function App() {
   return (
 
-    <main>
-      <header>
-        <h1>Lista zadań</h1>
-      </header>
-      <section className='section'>
-        <Form />
-      </section>
-      <section className='section'>
-        <div className='section__div'>
-          <h3 className='style__div__h3'>Dodane zadania</h3>
-         <Buttons tasks={tasks} hideDoneTask={hideDoneTask} />
-        </div>
-        <Tasks tasks={tasks} hideDoneTask={hideDoneTask} />
-      </section>
-    </main>
+    <Container>
+      
+      <Header title={"To Do List"} />
+
+      <Section
+        title="Dodaj nowe zadanie"
+        body={<Form />} 
+      />
+
+      <Section
+        title={'Dodane zadania'}
+        body={<Tasks tasks={tasks} hideDoneTask={hideDoneTask} />}
+        ekstraHeaderContent={<Buttons tasks={tasks} hideDoneTask={hideDoneTask} />}
+      />
+
+    </Container>
 
 
   );
